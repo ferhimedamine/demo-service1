@@ -1,11 +1,11 @@
-# build:
-#   image: node:6
-#   environment:
-#     - NPM_CONFIG_LOGLEVEL=warn
-#   commands:
-#     - "npm install"
-#     - "npm install buildgoggles@0.2.0-3"
-#     - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=ferhimedamine --releaseBranch=master"
+build:
+  image: node:6
+  environment:
+    - NPM_CONFIG_LOGLEVEL=warn
+  commands:
+    - "npm install"
+    - "npm install buildgoggles@0.2.0-3"
+    - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=ferhimedamine --releaseBranch=master"
 
 cache:
   mount:
@@ -31,13 +31,26 @@ deploy:
     github_token: $$GITHUB_TOKEN
     github_user: $$GITHUB_USER
     github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
     when:
         branch:
           - feature/*
-
+  cowpoke:
+    image: leankit/drone-cowpoke
+    docker_username: $$DOCKER_USER
+    docker_password: $$DOCKER_PASS
+    docker_repo: ferhimedamine/demo-service1
+    catalog_repo: ferhimedamine/rancher-dev-demo-service1
+    github_token: $$GITHUB_TOKEN
+    github_user: $$GITHUB_USER
+    github_email: $$GITHUB_EMAIL
+    cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
+    rancher_catalog_name: dev-demo-service1
+    bearer_token:
+    when:
+        branch:
+          - develop
   cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
