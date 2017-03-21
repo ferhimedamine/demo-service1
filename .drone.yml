@@ -1,11 +1,11 @@
-# build:
-#   image: node:6
-#   environment:
-#     - NPM_CONFIG_LOGLEVEL=warn
-#   commands:
-#     - "npm install"
-#     - "npm install buildgoggles@0.2.0-3"
-#     - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=ferhimedamine --releaseBranch=master"
+build:
+  image: node:6
+  environment:
+    - NPM_CONFIG_LOGLEVEL=warn
+  commands:
+    - "npm install"
+    - "npm install buildgoggles@0.2.0-3"
+    - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=ferhimedamine --releaseBranch=master"
 
 cache:
   mount:
@@ -22,7 +22,7 @@ publish:
     repo: ferhimedamine/demo-service1
 
 deploy:
-  cowpoke:
+  develop:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
@@ -36,9 +36,8 @@ deploy:
     bearer_token:
     when:
         branch:
-          - feature/*
-
-  cowpoke:
+          - develop
+  test:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
@@ -52,6 +51,4 @@ deploy:
     bearer_token:
     when:
       branch:
-        - release/*
-        - hotfix/*
-        - support/
+        - master
