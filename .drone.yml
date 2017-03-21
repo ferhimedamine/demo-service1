@@ -12,6 +12,7 @@ cache:
     - .git
 
 publish:
+  # Publish to DockerHub - Custom drone-docker, runs on "remote" docker instance.
   docker:
     image: jgreat/drone-docker
     docker_host: tcp://dind.mgmt.cloudbuzz.io:80
@@ -20,7 +21,7 @@ publish:
     email: $$DOCKER_EMAIL
     repo: ferhimedamine/demo-service1
 
-deploy-dev:
+deploy:
   cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
@@ -33,8 +34,12 @@ deploy-dev:
     cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
+    when:
+        branch:
+          - feature*
+          - bug*
+          - fix*
 
-deploy:
   cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
@@ -47,3 +52,6 @@ deploy:
     cowpoke_url: http://cowpoke.test.cloudbuzz.io:80
     rancher_catalog_name: test-demo-service1
     bearer_token:
+    when:
+      branch:
+        - master
