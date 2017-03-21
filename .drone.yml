@@ -2,42 +2,41 @@ cache:
   mount:
     - .git
 
-pipeline:
-  docker:
-    image: jgreat/drone-docker
-    docker_host: tcp://dind.mgmt.cloudbuzz.io:80
-    username: $$DOCKER_USER
-    password: $$DOCKER_PASS
-    email: $$DOCKER_EMAIL
-    repo: ferhimedamine/demo-service1
+docker:
+  image: jgreat/drone-docker
+  docker_host: tcp://dind.mgmt.cloudbuzz.io:80
+  username: $$DOCKER_USER
+  password: $$DOCKER_PASS
+  email: $$DOCKER_EMAIL
+  repo: ferhimedamine/demo-service1
 
-  deploy_dev:
-    image: leankit/drone-cowpoke
-    docker_username: $$DOCKER_USER
-    docker_password: $$DOCKER_PASS
-    docker_repo: ferhimedamine/demo-service1
-    catalog_repo: ferhimedamine/rancher-dev-demo-service1
-    github_token: $$GITHUB_TOKEN
-    github_user: $$GITHUB_USER
-    github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
-    rancher_catalog_name: dev-demo-service1
-    bearer_token:
-    when:
-        branch:
-          - feature*
-          - bug*
-          - fix*
+deploy_dev:
+  image: leankit/drone-cowpoke
+  docker_username: $$DOCKER_USER
+  docker_password: $$DOCKER_PASS
+  docker_repo: ferhimedamine/demo-service1
+  catalog_repo: ferhimedamine/rancher-dev-demo-service1
+  github_token: $$GITHUB_TOKEN
+  github_user: $$GITHUB_USER
+  github_email: $$GITHUB_EMAIL
+  cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
+  rancher_catalog_name: dev-demo-service1
+  bearer_token:
+  when:
+      branch:
+        - feature*
+        - bug*
+        - fix*
 
-  deploy_test:
-    image: leankit/drone-cowpoke
-    docker_username: $$DOCKER_USER
-    docker_password: $$DOCKER_PASS
-    docker_repo: ferhimedamine/demo-service1
-    catalog_repo: ferhimedamine/rancher-test-demo-service1
-    github_token: $$GITHUB_TOKEN
-    github_user: $$GITHUB_USER
-    github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.test.cloudbuzz.io:80
-    rancher_catalog_name: test-demo-service1
-    bearer_token:
+deploy_test:
+  image: leankit/drone-cowpoke
+  docker_username: $$DOCKER_USER
+  docker_password: $$DOCKER_PASS
+  docker_repo: ferhimedamine/demo-service1
+  catalog_repo: ferhimedamine/rancher-test-demo-service1
+  github_token: $$GITHUB_TOKEN
+  github_user: $$GITHUB_USER
+  github_email: $$GITHUB_EMAIL
+  cowpoke_url: http://cowpoke.test.cloudbuzz.io:80
+  rancher_catalog_name: test-demo-service1
+  bearer_token:
