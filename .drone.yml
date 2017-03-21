@@ -19,24 +19,6 @@ publish:
     password: $$DOCKER_PASS
     email: $$DOCKER_EMAIL
     repo: ferhimedamine/demo-service1
-    
-  cowpoke:
-    image: leankit/drone-cowpoke
-    docker_username: $$DOCKER_USER
-    docker_password: $$DOCKER_PASS
-    docker_repo: ferhimedamine/demo-service1
-    catalog_repo: ferhimedamine/rancher-dev-demo-service1
-    github_token: $$GITHUB_TOKEN
-    github_user: $$GITHUB_USER
-    github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
-    rancher_catalog_name: dev-demo-service1
-    bearer_token:
-    when:
-        branch:
-          - feature*
-          - bug*
-          - fix*
 
 deploy_dev:
   cowpoke:
@@ -51,11 +33,6 @@ deploy_dev:
     cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
-    when:
-        branch:
-          - feature*
-          - bug*
-          - fix*
 
 deploy_test:
   cowpoke:
