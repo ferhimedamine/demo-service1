@@ -34,9 +34,9 @@ deploy_dev:
     cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
-    when:
-      branch:
-        include: [  feature*, bug*, fix*  ]
+  when:
+    branch:
+      include: [  feature*, bug*, fix*  ]
 
 deploy_test:
   cowpoke:
@@ -51,6 +51,6 @@ deploy_test:
     cowpoke_url: http://cowpoke.test.cloudbuzz.io:80
     rancher_catalog_name: test-demo-service1
     bearer_token:
-    when:
-      branch:
-        include: [  master ]
+  when:
+    branch:
+      include: [  master ]
