@@ -50,5 +50,4 @@ deploy:
     bearer_token:
     when:
       branch:
-        - release-*
         - master
