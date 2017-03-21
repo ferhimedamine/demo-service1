@@ -49,5 +49,5 @@ deploy:
     rancher_catalog_name: test-demo-service1
     bearer_token:
     when:
-      branch:
-        - master
+        branch:
+          - master
