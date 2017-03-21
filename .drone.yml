@@ -21,6 +21,7 @@ publish:
     email: $$DOCKER_EMAIL
     repo: ferhimedamine/demo-service1
 
+deploy:
   develop:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
@@ -30,7 +31,6 @@ publish:
     github_token: $$GITHUB_TOKEN
     github_user: $$GITHUB_USER
     github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
     when:
