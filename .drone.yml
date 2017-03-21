@@ -22,7 +22,7 @@ publish:
     repo: ferhimedamine/demo-service1
 
 deploy:
-  cowpoke:
+  features:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
@@ -36,7 +36,7 @@ deploy:
     when:
         branch:
           - feature/*
-  cowpoke:
+  develop:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
@@ -51,7 +51,7 @@ deploy:
     when:
         branch:
           - develop
-  cowpoke:
+  test:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
