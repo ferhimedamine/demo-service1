@@ -20,7 +20,7 @@ publish:
     email: $$DOCKER_EMAIL
     repo: ferhimedamine/demo-service1
 
-deploy_dev:
+deploy-dev:
   cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
@@ -34,7 +34,7 @@ deploy_dev:
     rancher_catalog_name: dev-demo-service1
     bearer_token:
 
-deploy_test:
+deploy:
   cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
