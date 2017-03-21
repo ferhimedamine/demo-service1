@@ -36,9 +36,7 @@ deploy:
     bearer_token:
     when:
         branch:
-          - feature*
-          - bug*
-          - fix*
+          - feature/*
 
   cowpoke:
     image: leankit/drone-cowpoke
@@ -54,4 +52,6 @@ deploy:
     bearer_token:
     when:
       branch:
-        - master
+        - release/*
+        - hotfix/*
+        - support/
