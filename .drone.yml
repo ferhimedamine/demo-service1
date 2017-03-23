@@ -5,7 +5,7 @@ build:
   commands:
     - "npm install"
     - "npm install buildgoggles@0.2.0-3"
-    - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=ferhimedamine --releaseBranch=master"
+    - "./node_modules/buildgoggles/bin/buildgoggles --releaseOwner=xx --releaseBranch=master"
 
 cache:
   mount:
@@ -37,18 +37,3 @@ deploy:
     when:
         branch:
           - develop
-  test:
-    image: leankit/drone-cowpoke
-    docker_username: $$DOCKER_USER
-    docker_password: $$DOCKER_PASS
-    docker_repo: ferhimedamine/demo-service1
-    catalog_repo: ferhimedamine/rancher-test-demo-service1
-    github_token: $$GITHUB_TOKEN
-    github_user: $$GITHUB_USER
-    github_email: $$GITHUB_EMAIL
-    cowpoke_url: http://cowpoke.test.cloudbuzz.io:80
-    rancher_catalog_name: test-demo-service1
-    bearer_token:
-    when:
-        branch:
-          - master
