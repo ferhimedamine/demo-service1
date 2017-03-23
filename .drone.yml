@@ -34,6 +34,3 @@ deploy:
     cowpoke_url: http://cowpoke.dev.cloudbuzz.io:80
     rancher_catalog_name: dev-demo-service1
     bearer_token:
-    when:
-        branch:
-          - develop
