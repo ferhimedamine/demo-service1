@@ -22,7 +22,7 @@ publish:
     repo: ferhimedamine/demo-service1
 
 deploy:
-  develop:
+  cowpoke:
     image: leankit/drone-cowpoke
     docker_username: $$DOCKER_USER
     docker_password: $$DOCKER_PASS
