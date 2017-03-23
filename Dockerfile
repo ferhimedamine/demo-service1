@@ -1,6 +1,6 @@
 FROM kyma/docker-nginx
 
 # Add src.
-COPY src/ /var/www
+ADD src/ /var/www
 
 CMD 'nginx'
